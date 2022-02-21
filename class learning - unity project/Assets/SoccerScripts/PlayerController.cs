@@ -6,12 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     public float gravity = 3.5f; // grav force  
     public float speed = 25f; // player movement speed
+    [Range(0.1f, 1f)] public float crouchSpeedMultplier = 0.5f; // crouch speed
     public float jumpForce = 0.5f; // jumpiung force
 
     private CharacterController controller;
     private Vector3 motion;
     private float currentSpeed = 0;
     private float velocity = 0;
+    private bool crouching = false;
+    private bool isGrounded = false;
 
     // awake is called before the start method
     private void Awake()
@@ -29,9 +32,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         motion = Vector3.zero;
-        bool grounded = controller.isGrounded;
+        isGrounded = controller.isGrounded;
 
-        if (grounded == true)
+        if (isGrounded == true)
         {
             velocity = -gravity * Time.deltaTime;
         }
@@ -44,12 +47,30 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(controller.isGrounded == true)
+        if (isGrounded == true)
         {
-           if(Input.GetKeyDown(KeyCode.Space) == true)
+            if (crouching == false)
             {
-                velocity = jumpForce;
+                if (Input.GetKeyDown(KeyCode.Space) == true)
+                {
+                    velocity = jumpForce;
+                }
+                else if (Input.GetKeyDown(KeyCode.C) == true)
+                {
+                    crouching = true;
+                    currentSpeed = speed * crouchSpeedMultplier;
+                    controller.height = 1;
+
+                }
+            }
+            if(crouching == true)
+            {
+                if(Input.GetKeyUp(KeyCode.C) == true)
+                {
+                    crouching = false;
+                    currentSpeed = speed;
+                    controller.height = 2;
+                }
             }
         }
         ApplyMovement();
