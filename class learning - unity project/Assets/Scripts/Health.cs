@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
@@ -10,7 +11,21 @@ public class Health : MonoBehaviour
 
     private float currentHealth = 0;
 
-    // Start is called before the first frame update
+    public static Health Instance { get; private set; } //singleton variable
+
+    private void Awake()
+    {
+        //set singleton value
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            enabled = false;
+        }
+    }
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -25,7 +40,8 @@ public class Health : MonoBehaviour
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                // die
+                int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(sceneIndex); 
             }
             //subtract hp from bar
             healthBar.fillAmount = currentHealth / maxHealth;

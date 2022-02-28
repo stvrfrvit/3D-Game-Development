@@ -53,18 +53,25 @@
     <UnityVersion>2020.3.26f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\SoccerScripts\MouseLook.cs" />
-    <Compile Include="Assets\SoccerScripts\ObjectTeleport.cs" />
-    <Compile Include="Assets\OOP.cs" />
-    <Compile Include="Assets\SoccerScripts\Kick.cs" />
+    <Compile Include="Assets\Scripts\DamageTrigger.cs" />
+    <Compile Include="Assets\Scripts\Health.cs" />
+    <Compile Include="Assets\Scripts\HealthPotion.cs" />
+    <Compile Include="Assets\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\FiniteStateMachine.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\ObjectTeleport.cs" />
+    <Compile Include="Assets\Scripts\Door.cs" />
+    <Compile Include="Assets\Scripts\Interaction.cs" />
+    <Compile Include="Assets\Scripts\OOP.cs" />
+    <Compile Include="Assets\GenerateHUD.cs" />
+    <Compile Include="Assets\Scripts\Kick.cs" />
     <Compile Include="Assets\NodeScripts\Node.cs" />
     <Compile Include="Assets\NodeScripts\BreadthFirstSearch.cs" />
     <Compile Include="Assets\NodeScripts\DepthFirstSearch.cs" />
-    <Compile Include="Assets\SoccerScripts\PlayerController.cs" />
-    <Compile Include="Assets\Interaction.cs" />
-    <Compile Include="Assets\Door.cs" />
-    <Compile Include="Assets\Health.cs" />
-    <Compile Include="Assets\DamageTrigger.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\PlayerTeleport.cs" />
+    <Compile Include="Assets\DialogueUI.cs" />
+    <Compile Include="Assets\DialogueInteraction.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
